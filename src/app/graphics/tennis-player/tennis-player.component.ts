@@ -12,21 +12,25 @@ export class TennisPlayerComponent implements OnInit {
     {
       id: 1,
       name: 'Jim',
-      firstName: 'JIIIM'
+      firstName: 'JIIIM',
+      mail:''
     }
     ,
     {
       id: 2,
       name: 'Pete',
-      firstName: 'PEEETE'
+      firstName: 'PEEETE',
+      mail:''
     }, {
       id: 3,
       name: 'Pat',
-      firstName: 'PAAAT'
+      firstName: 'PAAAT',
+      mail:''
     }, {
       id: 4,
       name: 'Stephan',
-      firstName: 'STEPHAAAN'
+      firstName: 'STEPHAAAN',
+      mail:''
     }
   ];
 
@@ -36,7 +40,8 @@ export class TennisPlayerComponent implements OnInit {
   public player: TennisPlayer = {
     id: 1,
     name: 'Sampras',
-    firstName: 'Pete'
+    firstName: 'Pete',
+    mail:''
   };
   modify = false;
 

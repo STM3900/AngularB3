@@ -14,7 +14,8 @@ export class TennisPlayerFormComponent implements OnInit {
   public player: TennisPlayer = {
     id: 1,
     firstName: 'Pete',
-    name: 'Sampras'
+    name: 'Sampras',
+    mail:"t@t.com"
   };
 
   constructor(private fb: FormBuilder) { 
@@ -23,8 +24,10 @@ export class TennisPlayerFormComponent implements OnInit {
 
   playerForm = this.fb.group({
     id:[''],
-    name:['', Validators.required],
-    firstName:['']
+    name:['', [Validators.required]],
+    firstName:[''],
+    mail:['', [Validators.required, Validators.email]]
+
   })
 
   ngOnInit(): void {
@@ -39,6 +42,10 @@ export class TennisPlayerFormComponent implements OnInit {
 
   shouldShowRequiredError(control: AbstractControl){
     return !control.pristine && control.hasError('required');
+  }
+
+  shouldShowError(control: AbstractControl){
+    return !control.pristine && control.invalid;
   }
 
 }
