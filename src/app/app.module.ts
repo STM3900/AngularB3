@@ -3,16 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TennisPlayerComponent } from './graphics/tennis-player/tennis-player.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TennisPlayerFormComponent } from './graphics/tennis-player-form/tennis-player-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TennisPlayerComponent
+    TennisPlayerComponent,
+    TennisPlayerFormComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

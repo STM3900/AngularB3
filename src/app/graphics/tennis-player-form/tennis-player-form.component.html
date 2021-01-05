@@ -1,0 +1,18 @@
+
+
+<div>
+	<p>Mon joueur : {{player.firstName}} {{player.name}} </p>
+</div>
+<form [formGroup]="playerForm" (ngSubmit)="submit()">
+	<label>
+		name:
+		<input type="text" placeholder="Player name" formControlName="name" />
+		<span *ngIf="shouldShowRequiredError(playerForm.controls.name)">Ce champ est requis</span>
+	</label>
+	<label>
+		firstName:
+		<input type="text" placeholder="Player first name" formControlName="firstName" />
+	</label>
+
+	<button type="submit" [disabled]="!playerForm.valid">Valider</button>
+</form>
