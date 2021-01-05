@@ -1,12 +1,25 @@
 <p>tennis-player works!</p>
- <p>Bonjour {{player.firstName}} {{player.name}} </p> 
+<p>Bonjour {{player.firstName}} {{player.name}} </p>
 
 <ul>
-	<li *ngFor="let pl of playersNames">{{pl}}</li>
+  <li *ngFor="let pl of playersList" (click)="changeCible(pl)"> {{pl.name}} </li>
 </ul>
 
- <label>name:
-	 <input type="text" placeholder="Player name" [(ngModel)]="player.name" *ngIf="showText()"/>
- </label>
+<label>
+  name:
+  <input type="text" placeholder="Player name" [(ngModel)]="player.name" *ngIf="showText()" />
+</label>
 
- <button  (click)="onClick()" >Click</button>
+<label>
+  name:
+  <input type="text" placeholder="Player name" [(ngModel)]="cible.name" />
+</label>
+
+<label>
+  firstName:
+  <input type="text" placeholder="Player name" [(ngModel)]="cible.firstName" />
+</label>
+
+
+<button (click)="onClick()">Click</button>
+
