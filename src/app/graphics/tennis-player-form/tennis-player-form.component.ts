@@ -44,7 +44,7 @@ export class TennisPlayerFormComponent implements OnInit {
   }
   submit(): void {
       this.player = this.playerForm.value;
-      this._tplayerService.AddPlayer(this.player);
+      this._tplayerService.UpdatePlayer(this.player);
       this._tplayerService.selectPlayer(this.player);
       this.done.emit();
   }

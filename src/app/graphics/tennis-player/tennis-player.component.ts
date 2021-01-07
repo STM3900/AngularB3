@@ -20,7 +20,9 @@ export class TennisPlayerComponent  {
     this.selectedPlayer = data;
   }
 
-
+  onUpdate(){
+    this.isEditing = true;
+  }
   onAdd(){
     this.selectedPlayer = new TennisPlayer();
     this.isEditing = true;

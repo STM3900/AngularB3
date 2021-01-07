@@ -1,6 +1,7 @@
 <p>Mon composant liste</p>
 <app-tennis-player-list (selectionChanged)="onSelectionChanged($event)"></app-tennis-player-list>
 
+<button (click)="onUpdate()">Modifier</button>
 <button (click)="onAdd()">Ajouter</button>
 <app-tennis-player-detail [selectedPlayer]="selectedPlayer" *ngIf="!isEditing"></app-tennis-player-detail> 
 <app-tennis-player-form [player]="selectedPlayer" (done)="formDone()" *ngIf="isEditing"></app-tennis-player-form>

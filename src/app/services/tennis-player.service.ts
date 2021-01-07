@@ -29,6 +29,12 @@ export class TennisPlayerService {
       name: 'Stephan',
       firstName: 'STEPHAAAN',
       mail:''
+    },
+    {
+      id: 5,
+      name: 'Rapha',
+      firstName: 'Nadal',
+      mail:''
     }
   ];
 
@@ -49,9 +55,14 @@ export class TennisPlayerService {
     this.selectedPlayer = pl;
   }
 
-  AddPlayer(player: TennisPlayer) {
-    player.id=Math.max(0, ...this.playersList.map(pl=>pl.id))+1;
-    this.playersList.push(player);
+  UpdatePlayer(player: TennisPlayer) {
+    if (player.id==0){
+      player.id=Math.max(0, ...this.playersList.map(pl=>pl.id))+1;
+      this.playersList.push(player);
+    }else{
+      const playerIndex = this.playersList.findIndex(pl=>pl.id == player.id);
+      this.playersList[playerIndex]=player;
+    }
   }
 
 
