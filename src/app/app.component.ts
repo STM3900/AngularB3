@@ -8,8 +8,4 @@ import { TennisPlayer } from './Model/tennis-player';
 })
 export class AppComponent {
   title = 'AppTennisPlayer';
-
-  onSelectionChanged(data:TennisPlayer){
-    debugger;
-  }
 }

@@ -1,7 +1,3 @@
-<div>
-	<p>Mon joueur : {{player.firstName}} {{player.name}} </p>
-	<p>Le nom: {{getNom()}}</p>
-</div>
 <form [formGroup]="playerForm" (ngSubmit)="submit()">
 	<label>
 		name:
@@ -17,5 +13,6 @@
 		<input type="email" placeholder="Player first name" formControlName="mail" />
 		<span *ngIf="shouldShowError(playerForm.controls.mail)">Champ invalide</span>
 	</label>
+	<button (click)="onCancel()">Annuler</button>
 	<button type="submit" [disabled]="!playerForm.valid">Valider</button>
 </form>

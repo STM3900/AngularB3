@@ -1,0 +1,3 @@
+<ul>
+  <li *ngFor="let pl of playersList" (click)="selectPlayer(pl)" [class.selected]="isSelected(pl)"> {{pl.name}} </li>
+</ul>

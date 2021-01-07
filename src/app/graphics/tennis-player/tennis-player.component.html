@@ -1,26 +1,6 @@
-<p>tennis-player works!</p>
-<p>Bonjour {{cible.firstName}} {{cible.name}} </p>
+<p>Mon composant liste</p>
+<app-tennis-player-list (selectionChanged)="onSelectionChanged($event)"></app-tennis-player-list>
 
-<ul>
-  <li *ngFor="let pl of playersList" (click)="changeCible(pl)" [class.selected]="isSelected(pl)"> {{pl.name}} </li>
-</ul>
-<!-- 
-<label>
-  name:
-  <input type="text" placeholder="Player name" [(ngModel)]="cible.name" *ngIf="showText()" />
-</label>
-
-<label>
-  name:
-  <input type="text" placeholder="Player name" [(ngModel)]="cible.name" />
-</label>
-
-<label>
-  firstName:
-  <input type="text" placeholder="Player name" [(ngModel)]="cible.firstName" />
-</label> -->
-
-<app-player-detail [selectedPlayer]="cible"></app-player-detail>
-
-<button (click)="onClick()">Click</button>
-
+<button (click)="onAdd()">Ajouter</button>
+<app-tennis-player-detail [selectedPlayer]="selectedPlayer" *ngIf="!isEditing"></app-tennis-player-detail> 
+<app-tennis-player-form [player]="selectedPlayer" (done)="formDone()" *ngIf="isEditing"></app-tennis-player-form>

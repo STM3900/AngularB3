@@ -45,7 +45,14 @@ export class TennisPlayerService {
     
     return this.playersList;
   }
+  selectPlayer(pl: TennisPlayer) {
+    this.selectedPlayer = pl;
+  }
 
+  AddPlayer(player: TennisPlayer) {
+    player.id=Math.max(0, ...this.playersList.map(pl=>pl.id))+1;
+    this.playersList.push(player);
+  }
 
 
 }

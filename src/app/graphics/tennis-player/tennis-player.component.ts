@@ -9,45 +9,24 @@ import { TennisPlayerService } from 'src/app/services/tennis-player.service';
   templateUrl: './tennis-player.component.html',
   styleUrls: ['./tennis-player.component.scss']
 })
-export class TennisPlayerComponent implements OnInit {
+export class TennisPlayerComponent  {
   
-  public playersList:TennisPlayer[];
-  public cible : TennisPlayer;
-  modify = false;
+  constructor(private _tplayerService: TennisPlayerService){}
+  public selectedPlayer: TennisPlayer;
 
-  @Output() selectionChanged = new EventEmitter<TennisPlayer>();
+  public isEditing=false;
 
-  // constructeurs et initialiseurs
-  constructor(private _tplayerService:TennisPlayerService) { 
-    
+  onSelectionChanged(data:TennisPlayer){
+    this.selectedPlayer = data;
   }
 
-  ngOnInit(): void {
-    this.cible = this._tplayerService.getAllPlayer()[0];
-    // même tableau partagé
-    this.playersList = this._tplayerService.getAllPlayer();
-  }
 
-  public changeCible(pl: TennisPlayer) {
-    this.cible = pl;
-    this.selectionChanged.emit(pl);
+  onAdd(){
+    this.selectedPlayer = new TennisPlayer();
+    this.isEditing = true;
   }
-  public onClick() {
-    this.cible.firstName = "Jim";
-    this.cible.name = "Courier";
-    this.modify = !this.modify;
-
-    this._tplayerService.nom='je clique';
-  }
-  
-  public showText() {
-    return this.modify;
-  }
-
-  isSelected(pl : TennisPlayer){
-    
-    const result = pl == this.cible;
-    return result;
-    
+  formDone(){
+    this.isEditing=false;
+    this.onSelectionChanged(this._tplayerService.selectedPlayer);
   }
 }

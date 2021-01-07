@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { TennisPlayer } from 'src/app/Model/tennis-player';
 import { TennisPlayerService } from 'src/app/services/tennis-player.service';
 
@@ -11,13 +12,17 @@ import { TennisPlayerService } from 'src/app/services/tennis-player.service';
 export class TennisPlayerFormComponent implements OnInit {
 
 
+  private _player:TennisPlayer;
+  @Output() done = new EventEmitter();
+  @Input() set player(value:TennisPlayer){
+    this._player = value;
+    this.playerForm.setValue(this.player);
+  }
+
+  get player(){
+    return this._player;
+  }
   
-  public player: TennisPlayer = {
-    id: 1,
-    firstName: 'Pete',
-    name: 'Sampras',
-    mail:"t@t.com"
-  };
 
   constructor(private fb: FormBuilder, private _tplayerService: TennisPlayerService) { 
     
@@ -32,12 +37,16 @@ export class TennisPlayerFormComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    // initialiser les données du formulaire avec une valeur (en cas de modification par exemple)
-    this.playerForm.setValue(this.player);
+    
   }
-
+  onCancel(){
+    this.done.emit();
+  }
   submit(): void {
       this.player = this.playerForm.value;
+      this._tplayerService.AddPlayer(this.player);
+      this._tplayerService.selectPlayer(this.player);
+      this.done.emit();
   }
 
 
