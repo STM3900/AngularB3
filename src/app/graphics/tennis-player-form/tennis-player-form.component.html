@@ -1,5 +1,6 @@
 <div>
 	<p>Mon joueur : {{player.firstName}} {{player.name}} </p>
+	<p>Le nom: {{getNom()}}</p>
 </div>
 <form [formGroup]="playerForm" (ngSubmit)="submit()">
 	<label>

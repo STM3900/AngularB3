@@ -1,6 +1,8 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { StmtModifier, ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { TennisPlayer } from 'src/app/Model/tennis-player';
+import { TennisPlayerService } from 'src/app/services/tennis-player.service';
 
 @Component({
   selector: 'app-tennis-player',
@@ -35,24 +37,27 @@ export class TennisPlayerComponent implements OnInit {
   ];
 
   public cible = this.playersList[1];
-
-
-
   modify = false;
 
   // constructeurs et initialiseurs
-  constructor() { }
+  constructor(private _tplayerService:TennisPlayerService) { 
+    
+  }
 
   ngOnInit(): void {
+
   }
 
   public changeCible(pl: TennisPlayer) {
     this.cible = pl;
+    this.cible.name=this._tplayerService.nom;
   }
   public onClick() {
     this.cible.firstName = "Jim";
     this.cible.name = "Courier";
     this.modify = !this.modify;
+
+    this._tplayerService.nom='je clique';
   }
   
   public showText() {

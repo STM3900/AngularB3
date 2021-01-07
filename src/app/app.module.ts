@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { TennisPlayerComponent } from './graphics/tennis-player/tennis-player.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TennisPlayerFormComponent } from './graphics/tennis-player-form/tennis-player-form.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TennisPlayerFormComponent } from './graphics/tennis-player-form/tennis-
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

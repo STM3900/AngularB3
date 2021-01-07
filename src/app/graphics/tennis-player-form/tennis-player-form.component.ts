@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TennisPlayer } from 'src/app/Model/tennis-player';
+import { TennisPlayerService } from 'src/app/services/tennis-player.service';
 
 @Component({
   selector: 'app-tennis-player-form',
@@ -18,7 +19,7 @@ export class TennisPlayerFormComponent implements OnInit {
     mail:"t@t.com"
   };
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, private _tplayerService: TennisPlayerService) { 
     
   }
 
@@ -46,6 +47,10 @@ export class TennisPlayerFormComponent implements OnInit {
 
   shouldShowError(control: AbstractControl){
     return !control.pristine && control.invalid;
+  }
+
+  getNom(){
+    return this._tplayerService.nom;
   }
 
 }
