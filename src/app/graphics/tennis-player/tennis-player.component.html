@@ -1,13 +1,13 @@
 <p>tennis-player works!</p>
-<p>Bonjour {{player.firstName}} {{player.name}} </p>
+<p>Bonjour {{cible.firstName}} {{cible.name}} </p>
 
 <ul>
-  <li *ngFor="let pl of playersList" (click)="changeCible(pl)"> {{pl.name}} </li>
+  <li *ngFor="let pl of playersList" (click)="changeCible(pl)" [class.selected]="isSelected(pl)"> {{pl.name}} </li>
 </ul>
 
 <label>
   name:
-  <input type="text" placeholder="Player name" [(ngModel)]="player.name" *ngIf="showText()" />
+  <input type="text" placeholder="Player name" [(ngModel)]="cible.name" *ngIf="showText()" />
 </label>
 
 <label>

@@ -1,4 +1,4 @@
-import { StmtModifier } from '@angular/compiler';
+import { StmtModifier, ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { TennisPlayer } from 'src/app/Model/tennis-player';
 
@@ -37,12 +37,7 @@ export class TennisPlayerComponent implements OnInit {
   public cible = this.playersList[1];
 
 
-  public player: TennisPlayer = {
-    id: 1,
-    name: 'Sampras',
-    firstName: 'Pete',
-    mail:''
-  };
+
   modify = false;
 
   // constructeurs et initialiseurs
@@ -55,12 +50,19 @@ export class TennisPlayerComponent implements OnInit {
     this.cible = pl;
   }
   public onClick() {
-    this.player.firstName = "Jim";
-    this.player.name = "Courier";
+    this.cible.firstName = "Jim";
+    this.cible.name = "Courier";
     this.modify = !this.modify;
   }
   
   public showText() {
     return this.modify;
+  }
+
+  isSelected(pl : TennisPlayer){
+    
+    const result = pl == this.cible;
+    return result;
+    
   }
 }
