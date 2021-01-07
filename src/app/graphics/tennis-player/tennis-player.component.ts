@@ -1,6 +1,6 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { StmtModifier, ThrowStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TennisPlayer } from 'src/app/Model/tennis-player';
 import { TennisPlayerService } from 'src/app/services/tennis-player.service';
 
@@ -10,34 +10,12 @@ import { TennisPlayerService } from 'src/app/services/tennis-player.service';
   styleUrls: ['./tennis-player.component.scss']
 })
 export class TennisPlayerComponent implements OnInit {
-  public playersList: TennisPlayer[] = [
-    {
-      id: 1,
-      name: 'Jim',
-      firstName: 'JIIIM',
-      mail:''
-    }
-    ,
-    {
-      id: 2,
-      name: 'Pete',
-      firstName: 'PEEETE',
-      mail:''
-    }, {
-      id: 3,
-      name: 'Pat',
-      firstName: 'PAAAT',
-      mail:''
-    }, {
-      id: 4,
-      name: 'Stephan',
-      firstName: 'STEPHAAAN',
-      mail:''
-    }
-  ];
-
-  public cible = this.playersList[1];
+  
+  public playersList:TennisPlayer[];
+  public cible : TennisPlayer;
   modify = false;
+
+  @Output() selectionChanged = new EventEmitter<TennisPlayer>();
 
   // constructeurs et initialiseurs
   constructor(private _tplayerService:TennisPlayerService) { 
@@ -45,12 +23,14 @@ export class TennisPlayerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.cible = this._tplayerService.getAllPlayer()[0];
+    // même tableau partagé
+    this.playersList = this._tplayerService.getAllPlayer();
   }
 
   public changeCible(pl: TennisPlayer) {
     this.cible = pl;
-    this.cible.name=this._tplayerService.nom;
+    this.selectionChanged.emit(pl);
   }
   public onClick() {
     this.cible.firstName = "Jim";

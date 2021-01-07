@@ -4,7 +4,7 @@
 <ul>
   <li *ngFor="let pl of playersList" (click)="changeCible(pl)" [class.selected]="isSelected(pl)"> {{pl.name}} </li>
 </ul>
-
+<!-- 
 <label>
   name:
   <input type="text" placeholder="Player name" [(ngModel)]="cible.name" *ngIf="showText()" />
@@ -18,8 +18,9 @@
 <label>
   firstName:
   <input type="text" placeholder="Player name" [(ngModel)]="cible.firstName" />
-</label>
+</label> -->
 
+<app-player-detail [selectedPlayer]="cible"></app-player-detail>
 
 <button (click)="onClick()">Click</button>
 
