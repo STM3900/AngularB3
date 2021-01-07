@@ -1,5 +1,5 @@
 <p>Mon composant liste</p>
-<app-tennis-player-list (selectionChanged)="onSelectionChanged($event)"></app-tennis-player-list>
+<app-tennis-player-list (selectionChanged)="onSelectionChanged($event)" [canChangeSelection]="!isEditing"></app-tennis-player-list>
 
 <button (click)="onUpdate()">Modifier</button>
 <button (click)="onAdd()">Ajouter</button>

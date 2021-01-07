@@ -12,8 +12,11 @@ import { TennisPlayerService } from 'src/app/services/tennis-player.service';
 export class TennisPlayerFormComponent implements OnInit {
 
 
-  private _player:TennisPlayer;
+  
   @Output() done = new EventEmitter();
+
+
+  private _player:TennisPlayer;
   @Input() set player(value:TennisPlayer){
     this._player = value;
     this.playerForm.setValue(this.player);

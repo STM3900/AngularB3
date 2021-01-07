@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TennisPlayer } from 'src/app/Model/tennis-player';
 import { TennisPlayerService } from 'src/app/services/tennis-player.service';
 
@@ -13,6 +13,7 @@ export class TennisPlayerListComponent implements OnInit {
    */
   @Output() selectionChanged = new EventEmitter<TennisPlayer>();
 
+  @Input() canChangeSelection=true;
 
   /**
    * liste des joueurs
@@ -49,6 +50,15 @@ export class TennisPlayerListComponent implements OnInit {
     this.selectionChanged.emit(pl);
   }
 
+  /**
+   * Sélection par l'interface, possible uniquement si on peut changer la sélection
+   */
+  onSelectionChange(pl:TennisPlayer){
+    if (this.canChangeSelection)
+    {
+      this.selectPlayer(pl);
+    }
+  }
   /**
    * Indique si le joueur donné est sélectionné ou non
    * @param pl 
