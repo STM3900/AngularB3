@@ -8,6 +8,7 @@ import { TennisPlayerFormComponent } from './graphics/tennis-player-form/tennis-
 import { HttpClientModule } from '@angular/common/http';
 import { TennisPlayerDetailComponent } from './graphics/tennis-player-detail/tennis-player-detail.component';
 import { TennisPlayerListComponent } from './graphics/tennis-player-list/tennis-player-list.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TennisPlayerListComponent } from './graphics/tennis-player-list/tennis-
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
