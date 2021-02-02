@@ -9,11 +9,11 @@ export class TennisPlayer {
       if (data.hasOwnProperty('id'))
       this.id = data.id;
       if (data.hasOwnProperty('name'))
-      this.id = data.name;
+      this.name = data.name;
       if (data.hasOwnProperty('firstName'))
-      this.id = data.firstName;
+      this.firstName = data.firstName;
       if (data.hasOwnProperty('mail'))
-      this.id = data.mail;
+      this.mail = data.mail;
     }
   }
 
