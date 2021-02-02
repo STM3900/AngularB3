@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TennisPlayerDetailComponent } from './graphics/tennis-player-detail/tennis-player-detail.component';
 import { TennisPlayerListComponent } from './graphics/tennis-player-list/tennis-player-list.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BonjourComponent } from './graphics/bonjour/bonjour.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
     TennisPlayerComponent,
     TennisPlayerFormComponent,
     TennisPlayerDetailComponent,
-    TennisPlayerListComponent
+    TennisPlayerListComponent,
+    BonjourComponent
   ],
   imports: [
     BrowserModule,

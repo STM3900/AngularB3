@@ -56,6 +56,7 @@ export class TennisPlayerService {
   }
 
   UpdatePlayer(player: TennisPlayer) {
+    
     if (player.id==0){
       player.id=Math.max(0, ...this.playersList.map(pl=>pl.id))+1;
       this.playersList.push(player);
