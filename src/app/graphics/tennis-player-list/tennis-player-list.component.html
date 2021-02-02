@@ -1,3 +1,5 @@
 <ul>
-  <li *ngFor="let pl of playersList" (click)="onSelectionChange(pl)" [class.selected]="isSelected(pl)"> {{pl.name}} </li>
+  <li *ngFor="let pl of myPlayerList$ | async" (click)="onSelectionChange(pl)" [class.selected]="isSelected(pl)"> {{ pl.getLongName() }} </li>
 </ul>
+<p *ngIf="isReady">Nombre de joueurs : {{playersListCount}}</p>
+<p *ngIf="!isReady">Chargement des données en cours, veuillez patientez</p>

@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { TennisPlayer } from 'src/app/Model/tennis-player';
 import { TennisPlayerService } from 'src/app/services/tennis-player.service';
 
@@ -15,23 +17,54 @@ export class TennisPlayerListComponent implements OnInit {
 
   @Input() canChangeSelection=true;
 
+
+  isReady = false;
   /**
    * liste des joueurs
    */
-  playersList: TennisPlayer[];
-  
-  constructor(private _tplayerService:TennisPlayerService) { 
-    
+
+  myPlayerList$: Observable<TennisPlayer[]>;
+  myPlayer: TennisPlayer[];
+  myStrings : string[] = ['to'];
+  playersListCount: number;
+
+  constructor(private _tplayerService:TennisPlayerService) {
+
   }
 
   ngOnInit(): void {
     // récupération de la liste des joueurs
-    this.playersList = this._tplayerService.getAllPlayer();
+    console.log('avant le subscribe');
+
+
+    this.myPlayerList$ = this._tplayerService.getAllPlayer()
+      .pipe(
+        tap((data)=>{
+          this.isReady = true;
+          this.playersListCount = data.length;
+          if (data.length)
+            this.selectPlayer(data[0])
+        })
+      );
+
+    // this._tplayerService.getAllPlayer().subscribe({
+    //   next: (data)=>{
+    //     console.log('dans le subscribe');
+    //     console.log(data);
+    //     this.playersList = data;
+    //     this.isReady = true;
+    //   },
+    //   error:(data)=> {
+    //     console.log("il y a eu une erreur");
+    //   },
+    //   complete: ()=> console.log("Terminé")
+    // });
+    console.log('après le subscribe');
     // si il y a plusieurs joueurs, alors on prend le premier et on le sélectionne
-    if (this.playersList && this.playersList.some(v=>true)){
-      this.selectPlayer(this.playersList[0]);
-    }
-    
+    // if (this.playersList && this.playersList.some(v=>true)){
+    //   this.selectPlayer(this.playersList[0]);
+    // }
+
   }
 
   /**
@@ -61,7 +94,7 @@ export class TennisPlayerListComponent implements OnInit {
   }
   /**
    * Indique si le joueur donné est sélectionné ou non
-   * @param pl 
+   * @param pl
    */
   isSelected(pl : TennisPlayer){
     return  pl == this._tplayerService.selectedPlayer;

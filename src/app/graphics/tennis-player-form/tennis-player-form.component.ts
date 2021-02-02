@@ -12,7 +12,7 @@ import { TennisPlayerService } from 'src/app/services/tennis-player.service';
 export class TennisPlayerFormComponent implements OnInit {
 
 
-  
+
   @Output() done = new EventEmitter();
 
 
@@ -25,10 +25,10 @@ export class TennisPlayerFormComponent implements OnInit {
   get player(){
     return this._player;
   }
-  
 
-  constructor(private fb: FormBuilder, private _tplayerService: TennisPlayerService) { 
-    
+
+  constructor(private fb: FormBuilder, private _tplayerService: TennisPlayerService) {
+
   }
 
   playerForm = this.fb.group({
@@ -40,13 +40,13 @@ export class TennisPlayerFormComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    
+
   }
   onCancel(){
     this.done.emit();
   }
   submit(): void {
-      this.player = this.playerForm.value;
+      this.player =  new TennisPlayer(this.playerForm.value);
       this._tplayerService.UpdatePlayer(this.player);
       this._tplayerService.selectPlayer(this.player);
       this.done.emit();
