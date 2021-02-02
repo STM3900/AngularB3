@@ -16,4 +16,8 @@ export class TennisPlayer {
       this.id = data.mail;
     }
   }
+
+  getLongName(){
+    return `${this.firstName} ${this.name}`;
+  }
 }
