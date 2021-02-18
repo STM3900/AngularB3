@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+<<<<<<< HEAD
 import { TennisPlayerComponent } from './graphics/tennis-player/tennis-player.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TennisPlayerFormComponent } from './graphics/tennis-player-form/tennis-player-form.component';
@@ -19,6 +20,12 @@ import { BonjourComponent } from './graphics/bonjour/bonjour.component';
     TennisPlayerDetailComponent,
     TennisPlayerListComponent,
     BonjourComponent
+=======
+
+@NgModule({
+  declarations: [
+    AppComponent
+>>>>>>> parent of e28fb10 (Creation de mon premier composant)
   ],
   imports: [
     BrowserModule,
